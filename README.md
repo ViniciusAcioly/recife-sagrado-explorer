@@ -26,7 +26,9 @@ Trabalho de conclusão de curso baseado no projeto Recife Sagrado, focado na Igr
 
 > npm install --save firebase react-native-firebase
 
-> npm install react-navigation-transitions --save
+> npm install --save react-navigation-transitions 
+
+> npm install --save redux react-redux 
 
 git clone /url
 
