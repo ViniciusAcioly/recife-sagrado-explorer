@@ -1,9 +1,12 @@
 import React from 'react';
 import { StyleSheet, Text, TextInput, View, Image, ImageBackground, Button, StatusBar, Alert, SafeAreaView,
 	TouchableWithoutFeedback, Keyboard, KeyboardAvoidingView, TouchableOpacity, } from 'react-native';
-import { HomeComponent, EmailTextInput, PasswordTextInput } from '../../components';
 import { NavigationActions, StackActions } from 'react-navigation';
+import { HomeComponent, EmailTextInput, PasswordTextInput } from '../../components';
+
 import * as firebase from 'firebase';
+import * as Facebook from 'expo-facebook';
+import Expo from 'expo';
 
 export default class Login extends React.Component {
 
@@ -31,30 +34,42 @@ export default class Login extends React.Component {
 		this.props.navigation.navigate("ForgotPassword");
 	}
 
-	// componentDidMount() {
+	 componentDidMount() {
 
-	//     firebase.auth().onAuthStateChanged((user) => {
-	//       if (user != null) {
-	//         console.log(user)
-	//       }
-	//     })
-	//  }
+	     firebase.auth().onAuthStateChanged((user) => {
+	       if (user != null) {
+	         console.log(user)
+	       }
+	     })
+	  }
 
-	async loginWithFacebook() {
-		//Inserção da ID do app... 
-	    const { type, token } = await Expo.Facebook.logInWithReadPermissionsAsync
-	    ('2016825498381565', { permissions: ['public_profile'] })
-
-	    if (type == 'success') {
-
+	async logInWithFacebook() {
+	  try {
+	    const {
+	      type,
+	      token,
+	      expires,
+	      permissions,
+	      declinedPermissions,
+	    } = await Facebook.logInWithReadPermissionsAsync('2289213724503080', {
+	      permissions: ['public_profile', 'email'],
+	    });
+	    if (type === 'success') {
 	      const credential = firebase.auth.FacebookAuthProvider.credential(token)
-
-	      firebase.auth().signInAndRetrieveDataWithCredential(credential).catch((error) => {
+	      firebase.auth().signInWithCredential(credential).catch((error) => {
 	        console.log(error)
 	      })
+	      
+	      // Get the user's name using Facebook's Graph API
+	      //const response = await fetch(`https://graph.facebook.com/me?access_token=${token}`);
+	      //Alert.alert('Logado!', `Olá, ${(await response.json()).name}!`);
+	    } else {
+	      // type === 'cancel'
 	    }
+	  } catch ({ message }) {
+	    alert(`Facebook Login Error: ${message}`);
+	  }
 	}
-
 
 	render() {
 		return (
@@ -98,7 +113,7 @@ export default class Login extends React.Component {
 				</KeyboardAvoidingView>
 				 
 				<Text style={styles.text}> ────────  OU  ──────── </Text>
-				<TouchableOpacity onPress={this.loginWithFacebook}>
+				<TouchableOpacity onPress={this.logInWithFacebook}>
 					<Text style={styles.signupbutton}>Entrar com Facebook</Text>
 				</TouchableOpacity>
 

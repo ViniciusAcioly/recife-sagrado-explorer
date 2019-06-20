@@ -28,13 +28,7 @@ export default class SignUp extends React.Component {
 		}
 
 		firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password)
-			.then(() => { }, (error) =>{Alert.alert(error.message); });
-	}
-
-	onBackToLoginPress = () => {
-		//Retornar para a tela de Login
-		this.props.navigation.navigate("Login");
-		
+			.then(() => { this.props.navigation.navigate('Login'); }, (error) =>{Alert.alert(error.message); });
 	}
 
 

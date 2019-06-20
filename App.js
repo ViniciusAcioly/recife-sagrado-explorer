@@ -1,7 +1,11 @@
 import React from 'react';
 import { StyleSheet, StatusBar, Text, View, Platform } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
+
 import Colors from './constants/Colors';
+import { Icon, Ionicons } from '@expo/vector-icons';
+import { AppLoading, LinearGradient } from 'expo';
+import { Asset } from 'expo-asset'
+import * as Font from 'expo-font'
 
 import { createAppContainer, createSwitchNavigator, 
   createBottomTabNavigator, createStackNavigator } from 'react-navigation';
@@ -13,7 +17,6 @@ import SignUp from './screens/auth/SignUp';
 import ForgotPassword from './screens/auth/ForgotPassword';
 import Dashboard from './screens/Dashboard';
 
-import { AppLoading, Asset, Font, Icon, LinearGradient } from 'expo';
 import ApiKeys from './constants/ApiKeys'; //dados de autenticação do firebase
 import * as firebase from 'firebase'; 
 
@@ -41,7 +44,7 @@ export default class App extends React.Component {
 
   render() {
     //Verificação se o usuário já está logado ou não... 
-    if (!this.state.isLoadingComplete && !this.props.skipLoadingScreen) {
+    if (!this.state.isLoadingComplete && !this.state.isAuthenticationReady && !this.props.skipLoadingScreen) {
       return (
         <AppLoading
           startAsync={this._loadResourcesAsync}
@@ -53,13 +56,7 @@ export default class App extends React.Component {
       return (
       	//Dependendo da verificação, ele vai ao Dashboard (autenticado) ou 
       	//recorre ao AppContainer (não-autenticado) e, deste modo, à tela de Login. 
-        <Provider store={store}>
-          <View style={styles.container}>
-            {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
-            {Platform.OS === 'android' && <View style={styles.statusBarUnderlay} />}
-            {(this.state.isAuthenticated) ? <Dashboard /> : <AppContainer />} 
-          </View> 
-        </Provider>
+        (this.state.isAuthenticated) ? <Dashboard /> : <AppContainer />
       );
     }
   }

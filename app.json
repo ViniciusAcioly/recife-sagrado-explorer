@@ -11,6 +11,20 @@
     ],
     "version": "1.0.0",
     "orientation": "portrait",
+    "extra": {
+      "firebase": {
+        "apiKey": "AIzaSyDXYAc2Bp5Rrq2oozCfYn_tMPRe9XLRDSM",
+        "authDomain": "recife-sagrado-explorer.firebaseapp.com",
+        "databaseURL": "https://recife-sagrado-explorer.firebaseio.com",
+        "projectId": "recife-sagrado-explorer",
+        "storageBucket": "recife-sagrado-explorer.appspot.com",
+        "messagingSenderId": "26919361874",
+      },
+      "facebook": {
+        "appId": "2289213724503080",
+        "displayName": "Recife Sagrado Explorer",
+      },
+    },
     "icon": "./assets/icon.png",
     "splash": {
       "image": "./assets/splash.png",

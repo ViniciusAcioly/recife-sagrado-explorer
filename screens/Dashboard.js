@@ -6,41 +6,11 @@ import Colors from '../constants/Colors';
 import { createAppContainer, createSwitchNavigator, 
   createBottomTabNavigator, createStackNavigator } from 'react-navigation';
 
+import Home from '../screens/tabs/Home';
+import Challenges from '../screens/tabs/Challenges';
+import Profile from '../screens/tabs/Profile';
+
 //------------------------------------------------------------------------- ABAS FIXAS DO APP
-//aba da Home, com o "Bem-vindo, @" e dicas
-class Home extends React.Component {
-  render() {
-    return (
-      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-        <Text>Home!</Text>
-      </View>
-    );
-  }
-}
-
-//aba de Desafios, com os jogos
-class Challenges extends React.Component {
-  render() {
-    return (
-      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-        <Text>Settings!</Text>
-      </View>
-    );
-  }
-}
-
-//aba de Perfil, com as informações do usuário
-class Profile extends React.Component {
-  render() {
-    return (
-      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-        <Text>Profile!</Text>
-      </View>
-    );
-  }
-}
-
-//abas fixas do app indicadas acima
 const Abas = createBottomTabNavigator({
   Home: Home,
   Desafios: Challenges,
