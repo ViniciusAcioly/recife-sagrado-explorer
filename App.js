@@ -11,7 +11,7 @@ import { createAppContainer, createSwitchNavigator,
   createBottomTabNavigator, createStackNavigator } from 'react-navigation';
 import { fromRight } from 'react-navigation-transitions';
 
-//import Welcome from './../screens/auth/Welcome';
+//import Intro from './screens/Intro';
 import Login from './screens/auth/Login';
 import SignUp from './screens/auth/SignUp';
 import ForgotPassword from './screens/auth/ForgotPassword';
@@ -91,7 +91,7 @@ export default class App extends React.Component {
 
 //------------------------------------------------------------------------- TELAS DO APP
 const SwitchNavigator = createStackNavigator({
-  //Welcome: { screen: Welcome },
+  //Intro: { screen: Intro },
   Login: { screen: Login },
   SignUp: { screen: SignUp },
   ForgotPassword: {screen: ForgotPassword },

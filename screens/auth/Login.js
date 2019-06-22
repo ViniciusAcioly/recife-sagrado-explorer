@@ -74,8 +74,13 @@ export default class Login extends React.Component {
 	render() {
 		return (
 			<SafeAreaView style = {styles.container}>
+			<ImageBackground 
+			source={require('../../assets/images/background1small.jpg')}
+			style={styles.backgroundImage}>
+
 				<StatusBar barStyle="light-content" />
 				<KeyboardAvoidingView behavior="padding" style={styles.container}> 
+
 					<TouchableWithoutFeedback style={styles.container} onPress={Keyboard.dismiss}>
 						<View style = {styles.container}>
 							<View style = {styles.logoContainer}>
@@ -83,13 +88,19 @@ export default class Login extends React.Component {
 									source={require('../../assets/images/logo.png')}>
 								</Image>
 							</View>
+							<TouchableOpacity style={styles.fbbuttonContainer} onPress={this.logInWithFacebook}>
+								<Text style={styles.signupbutton}>ENTRAR COM FACEBOOK</Text>
+							</TouchableOpacity>
+
+							<Text style={styles.text}> ──────  OU  ────── </Text>
+							
 							<EmailTextInput style={styles.input}
 								value={this.state.email}
 								onChangeText={(text) => { this.setState({email: text}) }}
 								placeholder="E-mail"
 								placeholderTextColor="rgba(255, 255, 255, 0.8)"
 								blurOnSubmit={ false }
-								returnKeyType={ "next" }
+								returnKeyLabel={ "next" }
 							/>
 							<PasswordTextInput style={styles.input}
 								value={this.state.password}
@@ -97,7 +108,7 @@ export default class Login extends React.Component {
 								placeholder="Senha"
 								placeholderTextColor="rgba(255, 255, 255, 0.8)"
 								blurOnSubmit={ true }
-          						returnKeyType={ "done" }
+          						returnKeyLabel={ "done" }
 							/>
 							<TouchableOpacity style={styles.buttonContainer} onPress={this.onLoginPress}>
 								<Text style={styles.buttonText}>ENTRAR</Text>
@@ -111,15 +122,12 @@ export default class Login extends React.Component {
 						</View>
 					</TouchableWithoutFeedback>
 				</KeyboardAvoidingView>
-				 
-				<Text style={styles.text}> ────────  OU  ──────── </Text>
-				<TouchableOpacity onPress={this.logInWithFacebook}>
-					<Text style={styles.signupbutton}>Entrar com Facebook</Text>
-				</TouchableOpacity>
 
 				<TouchableOpacity style={styles.buttonReg} onPress={this.onCreateAccountPress}>
 					<Text style={styles.signupbutton}>REGISTRAR</Text>
 				</TouchableOpacity>				
+			
+			</ImageBackground>
 			</SafeAreaView>
 		);
 	}
@@ -129,7 +137,7 @@ const styles = StyleSheet.create({
 	container: {
 		flex: 1,
 		justifyContent: 'center',
-		backgroundColor: 'rgb(32, 53, 70)',
+		//backgroundColor: 'rgb(32, 53, 70)',
 		flexDirection: 'column',
 	},
 	logoContainer: {
@@ -139,6 +147,14 @@ const styles = StyleSheet.create({
 	logo: {
 		width: 160,
 		height: 160,
+	},
+	backgroundImage: {
+	    flex: 1,
+	    width: '100%',
+	    height: '100%',
+    // flexDirection: 'column',
+    // backgroundColor:'transparent',
+    // justifyContent: 'flex-start',
 	},
 	text: {
 		fontWeight: 'bold',
@@ -156,7 +172,7 @@ const styles = StyleSheet.create({
 		marginHorizontal: 45,
 		marginVertical: 10,
 		paddingHorizontal: 10,
-		borderRadius: 10,
+		borderRadius: 5,
 	},
 	inputGroup: {
 		bottom: 50,
@@ -164,9 +180,9 @@ const styles = StyleSheet.create({
 	buttonContainer: {
 		height: 40,
 		backgroundColor: '#f7c744',
-		marginHorizontal: 45,
-		marginVertical: 10,
-		borderRadius: 10,
+		marginHorizontal: 65,
+		marginVertical: 5,
+		borderRadius: 30,
 	},
 	buttonReg: {
 		height: 45,
@@ -188,8 +204,17 @@ const styles = StyleSheet.create({
 		marginVertical: 5,
 		paddingHorizontal: 10,
 	},
+	fbbuttonContainer: {
+		height: 40,
+		backgroundColor: '#4267b2',
+		marginHorizontal: 45,
+		marginVertical: 10,
+		bottom: 10,
+		borderRadius: 30,
+	},
 	signupbutton: {
 		height: 40,
+		fontSize: 12,
 		alignItems: 'center',
 		textAlign: 'center',
 		color: '#fff',

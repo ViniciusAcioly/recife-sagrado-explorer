@@ -35,6 +35,7 @@ export default class SignUp extends React.Component {
 	render() {
 		return (
 			<SafeAreaView style = {styles.container}>
+
 				<StatusBar barStyle="light-content" />
 				<KeyboardAvoidingView behavior="padding" style={styles.container}> 
 					<TouchableWithoutFeedback style={styles.container} onPress={Keyboard.dismiss}>
@@ -85,6 +86,7 @@ export default class SignUp extends React.Component {
 						</View>
 					</TouchableWithoutFeedback>
 				</KeyboardAvoidingView>							
+
 			</SafeAreaView>
 		);
 	}
@@ -123,7 +125,7 @@ const styles = StyleSheet.create({
 		marginHorizontal: 45,
 		marginVertical: 10,
 		paddingHorizontal: 10,
-		borderRadius: 10,
+		borderRadius: 5,
 	},
 	inputGroup: {
 		bottom: 50,
@@ -131,9 +133,9 @@ const styles = StyleSheet.create({
 	buttonContainer: {
 		height: 40,
 		backgroundColor: '#f7c744',
-		marginHorizontal: 45,
-		marginVertical: 10,
-		borderRadius: 10,
+		marginHorizontal: 65,
+		marginVertical: 5,
+		borderRadius: 30,
 	},
 	buttonReg: {
 		height: 45,

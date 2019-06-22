@@ -31,25 +31,29 @@ class Home extends React.Component {
   render() {
     return (
     	<SafeAreaView style = {styles.container}>
+
 			<StatusBar barStyle="light-content" />
-				<TouchableWithoutFeedback style={styles.container} onPress={Keyboard.dismiss}>
-					<View style = {styles.container}>
-						<View style = {styles.logoContainer}>
-							<Image style = {styles.logo}
-								source={require('../../assets/images/logo.png')}>
-							</Image>
+				
+					<TouchableWithoutFeedback style={styles.container} onPress={Keyboard.dismiss}>
+						<View style = {styles.container}>
+							<View style = {styles.logoContainer}>
+								<Image style = {styles.logo}
+									source={require('../../assets/images/logo.png')}>
+								</Image>
+							</View>
+
+							<TouchableOpacity style={styles.buttonContainer} onPress={this.onNewGamePress}>
+								<Text style={styles.buttonText}>JOGAR</Text>
+							</TouchableOpacity>
+
+							<TouchableOpacity style={styles.buttonContainer} onPress={this.onExtrasPress}>
+								<Text style={styles.buttonText}>EXTRAS</Text>
+							</TouchableOpacity>
 						</View>
-
-						<TouchableOpacity style={styles.buttonContainer} onPress={this.onNewGamePress}>
-							<Text style={styles.buttonText}>JOGAR</Text>
-						</TouchableOpacity>
-
-						<TouchableOpacity style={styles.buttonContainer} onPress={this.onExtrasPress}>
-							<Text style={styles.buttonText}>EXTRAS</Text>
-						</TouchableOpacity>
-					</View>
-				</TouchableWithoutFeedback>				
+					</TouchableWithoutFeedback>
+	
 		</SafeAreaView>
+		
 
     );
   }
@@ -87,7 +91,7 @@ const styles = StyleSheet.create({
 		marginHorizontal: 45,
 		marginVertical: 10,
 		paddingHorizontal: 10,
-		borderRadius: 10,
+		borderRadius: 5,
 	},
 	inputGroup: {
 		bottom: 50,
@@ -95,13 +99,9 @@ const styles = StyleSheet.create({
 	buttonContainer: {
 		height: 40,
 		backgroundColor: '#f7c744',
-		marginHorizontal: 45,
-		marginVertical: 10,
-		borderRadius: 10,
-	},
-	buttonReg: {
-		height: 45,
-		backgroundColor: 'rgba(255, 255, 255, 0.1)',
+		marginHorizontal: 65,
+		marginVertical: 5,
+		borderRadius: 30,
 	},
 	buttonText: {
 		fontWeight: 'bold',

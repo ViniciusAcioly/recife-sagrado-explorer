@@ -31,7 +31,9 @@ class Challenges extends React.Component {
   render() {
     return (
     	<SafeAreaView style = {styles.container}>
+
 			<StatusBar barStyle="light-content" />
+
 				<TouchableWithoutFeedback style={styles.container} onPress={Keyboard.dismiss}>
 					<View style = {styles.container}>
 						<View style = {styles.logoContainer}>
@@ -49,6 +51,7 @@ class Challenges extends React.Component {
 						</TouchableOpacity>
 					</View>
 				</TouchableWithoutFeedback>				
+
 		</SafeAreaView>
 
     );
@@ -95,13 +98,9 @@ const styles = StyleSheet.create({
 	buttonContainer: {
 		height: 40,
 		backgroundColor: '#f7c744',
-		marginHorizontal: 45,
-		marginVertical: 10,
-		borderRadius: 10,
-	},
-	buttonReg: {
-		height: 45,
-		backgroundColor: 'rgba(255, 255, 255, 0.1)',
+		marginHorizontal: 65,
+		marginVertical: 5,
+		borderRadius: 30,
 	},
 	buttonText: {
 		fontWeight: 'bold',

@@ -4,13 +4,15 @@ import { Ionicons } from '@expo/vector-icons';
 import Colors from '../constants/Colors';
 
 import { createAppContainer, createSwitchNavigator, 
-  createBottomTabNavigator, createStackNavigator } from 'react-navigation';
+  createBottomTabNavigator, createMaterialTopTabNavigator, createStackNavigator } from 'react-navigation';
+import { fromRight } from 'react-navigation-transitions';
 
 import Home from '../screens/tabs/Home';
 import Challenges from '../screens/tabs/Challenges';
 import Profile from '../screens/tabs/Profile';
 
 //------------------------------------------------------------------------- ABAS FIXAS DO APP
+
 const Abas = createBottomTabNavigator({
   Home: Home,
   Desafios: Challenges,
@@ -61,10 +63,10 @@ const Abas = createBottomTabNavigator({
       activeTintColor: '#f7c744',
       inactiveTintColor: 'gray',
     },
-
+    
     tabBarPosition: 'bottom',
-    animationEnabled: false,
-    swipeEnabled: false,
+    animationEnabled: true, //recurso indisponível no createBottomTabNavigator
+    swipeEnabled: true, //recurso indisponível no createBottomTabNavigator
   }
 );
 

@@ -1,6 +1,6 @@
-import HomeComponent from './HomeComponent';
 import EmailTextInput from './EmailTextInput';
 import PasswordTextInput from './PasswordTextInput';
-import PhoneButton from './PhoneButton';
+import StyledText from './StyledText';
+import TabBarIcon from './TabBarIcon';
 
-export { HomeComponent, EmailTextInput, PasswordTextInput, PhoneButton  };
+export { EmailTextInput, PasswordTextInput, StyledText, TabBarIcon };
